@@ -2,6 +2,18 @@
 Release Notes
 =============
 
+Release 2.0.0
+-------------
+- Forked to v2.0.0 as the config syntax has fully changed
+- New configuration syntax as a python dict
+- Removed bottle dependency
+- Added HTML element selection
+- Use a static name for the watermark image to support spaces in text
+- Added additional fonts with configuration
+- Customizable border options
+- Default image size to fit US Letter PDF pages
+
+
 Release 1.0.0
 -------------
 -  Move to 1.0.0 stable release.

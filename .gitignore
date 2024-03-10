@@ -10,5 +10,8 @@ _build/
 dist/
 temp.css
 textmark_*
-sphinxmark.egg-info/
+*.egg-info/
 .pytest_cache/
+doc/build/
+.vscode/
+doc/modules.rst

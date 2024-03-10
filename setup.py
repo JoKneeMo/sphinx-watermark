@@ -1,52 +1,50 @@
 #!/bin/python3
 # coding: utf-8
-"""sphinxmark setup file."""
+'''sphinx-watermark setup file.'''
 
-# To use a consistent encoding
-from codecs import open
-from os import path
-
+from io import open
 from setuptools import setup
-
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the README file
-with open(path.join(here, "README.rst"), encoding="utf-8") as f:
-    long_description = f.read()
+from sphinx_watermark import __version__, __author__, __email__, __license__, __keywords__
 
 setup(
-    name="sphinxmark",
-    version="1.0.0",
-    description="A Sphinx extension that enables watermarks for HTML output.",
-    long_description=long_description,
-    url="https://github.com/kallimachos/sphinxmark",
-    author="Brian Moss",
-    author_email="kallimachos@gmail.com",
-    license="Apache 2.0",
-    classifiers=[
-        "Development Status :: 5 - Production/Stable",
-        "Intended Audience :: Developers",
-        "Topic :: Documentation :: Sphinx",
-        "Framework :: Sphinx :: Extension",
-        "License :: OSI Approved :: Apache Software License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-    ],
-    keywords="sphinx documentation watermark",
-    packages=["sphinxmark"],
+    name='sphinx-watermark',
+    version=__version__,
+    url='https://github.com/JoKneeMo/sphinx-watermark',
+    project_urls = {
+        'repository': 'https://github.com/JoKneeMo/sphinx-watermark',
+        'homepage': 'https://jokneemo.github.io/sphinx-watermark',
+        'documentation': 'https://jokneemo.github.io/sphinx-watermark',
+        'issues': 'https://github.com/JoKneeMo/sphinx-watermark/issues'
+    },
+    author=__author__,
+    author_email=__email__,
+    license=__license__,
+    description='A Sphinx extension that enables watermarks for HTML output.',
+    long_description=open('README.rst', encoding='utf-8').read(),
+    long_description_content_type='text/x-rst',
+    platforms='any',
+    keywords=__keywords__,
+    packages=['sphinx_watermark'],
     package_data={
-        "sphinxmark": [
-            "watermark-draft.png",
-            "border.tpl",
-            "watermark.tpl",
-            "arial.ttf",
+        'sphinx_watermark': [
+            'fonts/*',
         ],
     },
-    install_requires=[
-        "bottle",
-        "Pillow",
-        "sphinx",
-    ],
+    python_requires='>=3',
+    install_requires=open('requirements.txt', 'r').readlines(),
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Writers',
+        'Topic :: Documentation :: Sphinx',
+        'Framework :: Sphinx :: Extension',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+    ]
 )

@@ -2,5 +2,5 @@ css
 isort
 openstackdocstheme
 png
-sphinxmark
+sphinx-watermark
 viewport
