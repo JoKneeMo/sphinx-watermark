@@ -1,0 +1,6 @@
+div.md-main__inner {
+            background-image: url("watermark_text.png") !important;
+            background-repeat: repeat-y !important;
+            background-position: center top !important;
+            background-attachment: scroll !important;
+        }
