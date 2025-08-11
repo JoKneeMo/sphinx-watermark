@@ -14,8 +14,8 @@ jobs:
     steps:
       - name: Install APT packages
         run: |
-          apt update
-          apt install -y libenchant-2-dev
+          sudo apt update
+          sudo apt install -y libenchant-2-dev
 
       - name: Checkout repository
         uses: actions/checkout@v4
