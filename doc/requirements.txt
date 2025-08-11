@@ -2,4 +2,4 @@ Pillow>=6.0.0
 sphinx==5.0.2
 sphinx-immaterial
 sphinx-business-theme
-wasyprint
+weasyprint
