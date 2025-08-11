@@ -5,11 +5,18 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  build-docs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      html-path: ${{ steps.build.outputs.html-path }}
     steps:
+      - name: Install APT packages
+        run: |
+          apt update
+          apt install -y libenchant-2-dev
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -26,17 +33,39 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: Install Python packages
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements.txt -r doc/requirements.txt
+          python3 -m pip install --upgrade -r requirements.txt -r doc/requirements.txt
+          python3 -m pip install .
 
       - name: Build HTML docs
-        run: make html -C doc
+        id: build
+        run: |
+          make html -C doc
+          echo "html-path=doc/build/html" >> $GITHUB_OUTPUT
+
+      - name: Upload built docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-docs
+          path: doc/build/html
+
+  deploy-docs:
+    needs: build-docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Download built docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: html-docs
+          path: html-docs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: doc/build/html
+          publish_dir: html-docs

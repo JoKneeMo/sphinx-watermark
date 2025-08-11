@@ -1,2 +1,2 @@
-Pillow>=6.0.0
-sphinx>=2.0.0
+pillow>=7.1.2
+sphinx>=5.0.2

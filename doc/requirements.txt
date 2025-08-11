@@ -1,5 +1,6 @@
-Pillow>=6.0.0
+pillow>=7.1.2
 sphinx==5.0.2
 sphinx-immaterial
 sphinx-business-theme
 weasyprint
+sphinxcontrib-spelling==7.7.0
