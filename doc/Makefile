@@ -48,8 +48,9 @@ singlehtml:
 pdf:
 	make singlehtml
 	sed -i -e "s/href\=\"index\.html\#/href\=\"\#/g" "$(BUILDDIR)/singlehtml/index.html"
-	mkdir -p $(BUILDDIR)/pdf
-	weasyprint $(BUILDDIR)/singlehtml/index.html "$(BUILDDIR)/pdf/weasyprint_output.pdf"
+	@PDFFILENAME=$$(jq -r '"\(.pdf)_v\(.version).pdf"' content/docvars.json); \
+	weasyprint $(BUILDDIR)/singlehtml/index.html "content/_static/$$PDFFILENAME"
+	rm -rf $(BUILDDIR) content/docvars.json
 	@echo
 	@echo "Build finished. The PDF file is in $(BUILDDIR)/."
 

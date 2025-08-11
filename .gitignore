@@ -15,3 +15,4 @@ textmark_*
 doc/build/
 .vscode/
 doc/modules.rst
+doc/content/_static/*.pdf

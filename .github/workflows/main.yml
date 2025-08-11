@@ -15,7 +15,7 @@ jobs:
       - name: Install APT packages
         run: |
           sudo apt update
-          sudo apt install -y libenchant-2-dev
+          sudo apt install -y libenchant-2-dev libpango-1.0-0 libharfbuzz0b libpangoft2-1.0-0 libharfbuzz-subset0 jq
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,8 +29,13 @@ jobs:
         run: |
           pip install --upgrade -r doc/requirements.txt sphinx-watermark
 
+      - name: Build PDF doc
+        id: build-pdf
+        run: |
+          make pdf -C doc
+
       - name: Build HTML docs
-        id: build
+        id: build-html
         run: |
           make html -C doc
           echo "html-path=doc/build/html" >> $GITHUB_OUTPUT

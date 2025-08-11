@@ -8,6 +8,7 @@ from pathlib import Path
 from sphinx.roles import MenuSelection
 from sphinxcontrib import spelling
 from sphinx_watermark import __version__
+import json
 
 
 # -- Document Variables ---------------------------------------------------
@@ -187,6 +188,10 @@ if builder == 'singlehtml':
     html_sidebars = {
         '**': []
     }
+
+    # Write docvars to file for weasyprint to set pdf file name
+    with open('docvars.json', 'w') as f:
+        json.dump(docvars, f, indent=4)
 
 # -- Options for Texinfo output -------------------------------------------
 texinfo_documents = [
