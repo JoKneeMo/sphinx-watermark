@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 # coding: utf-8
 '''sphinx-watermark setup file.'''
 
@@ -46,5 +46,6 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ]
 )
